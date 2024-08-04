@@ -6,6 +6,7 @@ A new view for User objects that handles all default RESTFul API actions
 from flask import jsonify, abort, request
 from api.v1.views import app_views, storage
 from models.user import User
+from models import storage
 
 
 @app_views.route('/users', methods=['GET'], strict_slashes=False)
@@ -45,8 +46,6 @@ def create_user():
     json_for_user = request.get_json(silent=True)
     if json_for_user is None:
         abort(400, 'Not a JSON')
-    if "name" not in json_for_user:
-        abort(400, 'Missing name')
     if "email" not in json_for_user:
         abort(400, 'Missing email')
     if "password" not in json_for_user:
