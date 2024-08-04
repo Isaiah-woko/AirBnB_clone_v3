@@ -9,7 +9,7 @@ import unittest
 from unittest import mock
 BaseModel = models.base_model.BaseModel
 module_doc = models.base_model.__doc__
-
+import time
 
 class TestBaseModelDocs(unittest.TestCase):
     """Tests to check the documentation and style of BaseModel class"""
@@ -84,6 +84,7 @@ class TestBaseModel(unittest.TestCase):
         value."""
         tic = datetime.now()
         inst1 = BaseModel()
+        time.sleep(1)
         toc = datetime.now()
         self.assertTrue(tic <= inst1.created_at <= toc)
         time.sleep(1e-4)

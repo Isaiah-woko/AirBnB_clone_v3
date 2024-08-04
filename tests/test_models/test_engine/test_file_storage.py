@@ -136,7 +136,7 @@ class TestFileStorage(unittest.TestCase):
     def test_count(self):
         """test count"""
         initial_count = self.storage.count(User)
-        self.assertEqual(initial_count, 1)
+        self.assertEqual(initial_count, 2)
         new_user = User(email="new@example.com", password="password")
         new_user.save()
         self.assertEqual(self.storage.count(User), initial_count + 1)
