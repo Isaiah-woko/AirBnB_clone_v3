@@ -11,7 +11,6 @@ from models.place import Place
 from models.review import Review
 from models.state import State
 from models.user import User
-from os import environ
 
 classes = {"Amenity": Amenity, "BaseModel": BaseModel, "City": City,
            "Place": Place, "Review": Review, "State": State, "User": User}
@@ -43,10 +42,6 @@ class FileStorage:
 
     def save(self, obj):
         """serializes __objects to the JSON file (path: __file_path)"""
-        environ['INCLUDE_PASSWORD'] = 'True'
-        obj_dict = obj.to_dict()
-        environ['INCLUDE_PASSWORD'] = 'False'
-
         json_objects = {}
         for key in self.__objects:
             json_objects[key] = self.__objects[key].to_dict()
