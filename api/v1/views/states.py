@@ -29,7 +29,8 @@ def retrieve_state_id(state_id):
     return jsonify(get_state_obj.to_dict())
 
 
-@app_views.route('/states/<state_id>', methods=['DELETE'], strict_slashes=False)
+@app_views.route('/states/<state_id>',
+                 methods=['DELETE'], strict_slashes=False)
 def delete_state(state_id):
     get_state_obj = storage.get("State", str(state_id))
 
@@ -74,4 +75,3 @@ def update_state(state_id):
             setattr(get_state_obj, key, value)
         get_state_obj.save()
         return jsonify(get_state_obj.to_dict()), 200
-
