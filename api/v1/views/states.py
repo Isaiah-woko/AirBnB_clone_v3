@@ -52,7 +52,7 @@ def create_state():
         abort(400, 'Missing name')
 
     new_state = State(**json_for_state)
-    new_state.save
+    new_state.save()
     response = jsonify(new_state.to_dict())
     response.status_code = 201
 
