@@ -70,7 +70,7 @@ def update_user(user_id):
         abort(400, 'Not a JSON')
 
     for key, value in json_for_user.items():
-        if key not in ["id", "created_at", "updated_at"]:
+        if key not in ["id", "email", "created_at", "updated_at"]:
             setattr(user_obj, key, value)
     user_obj.save()
     return jsonify(user_obj.to_dict()), 200
