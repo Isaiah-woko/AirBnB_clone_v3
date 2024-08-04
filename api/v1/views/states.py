@@ -59,7 +59,7 @@ def create_state():
     return response
 
 
-@app_views.route('/api/v1/states/<state_id>', methods=['PUT'], strict_slashes=False)
+@app_views.route('states/<state_id>', methods=['PUT'], strict_slashes=False)
 def update_state(state_id):
     """Updates a State object"""
     json_for_state = request.get_json(silent=True)
