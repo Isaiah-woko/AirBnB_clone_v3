@@ -25,7 +25,7 @@ def get_stat():
         "cities": storage.count("City"),
         "places": storage.count("Place"),
         "reviews": storage.count("Review"),
-        "state": storage.count("State"),
+        "states": storage.count("State"),
         "users": storage.count("User"),
     }
 
