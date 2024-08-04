@@ -30,12 +30,12 @@ class User(BaseModel, Base):
         super().__init__(*args, **kwargs)
 
     @property
-    def get_password(self):
+    def password(self):
         """getter for the password and returns hashed md5"""
         return self.__dict__.get("password")
 
-    @get_password.setter
-    def hashed_password(self, get_password):
+    @password.setter
+    def password(self, password):
         """set the password with md5"""
-        self.__dict__["password"] = md5(get_password.encode
+        self.__dict__["password"] = md5(password.encode
                                         ('utf-8')).hexdigest()
