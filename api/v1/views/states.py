@@ -68,7 +68,7 @@ def update_state(state_id):
     get_state_obj = storage.get("State", str(state_id))
 
     if get_state_obj is None:
-        abort(400)
+        abort(404)
     for key, value in json_for_state.items():
         if key not in ["id", "created_at", "updated_at"]:
             setattr(get_state_obj, key, value)
