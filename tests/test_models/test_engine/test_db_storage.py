@@ -86,3 +86,57 @@ class TestFileStorage(unittest.TestCase):
     @unittest.skipIf(models.storage_t != 'db', "not testing db storage")
     def test_save(self):
         """Test that save properly saves objects to file.json"""
+
+
+class TestDBStorage(unittest.TestCase):
+    """test get, count"""
+    def setUp(self):
+        """test setup"""
+        self.storage = models.storage
+        self.user = User(email="user@example.com", password="password")
+        self.user.save()
+
+    def tearDown(self):
+        """test down"""
+        self.storage.delete(self.user)
+        self.storage.save()
+
+    def test_get(self):
+        """test get"""
+        user = self.storage.get(User, self.user.id)
+        self.assertEqual(user.id, self.user.id)
+
+    def test_count(self):
+        """test count"""
+        initial_count = self.storage.count(User)
+        self.assertEqual(initial_count, 1)
+        new_user = User(email="new@example.com", password="password")
+        new_user.save()
+        self.assertEqual(self.storage.count(User), initial_count + 1)
+
+
+class TestFileStorage_(unittest.TestCase):
+    """test get, count"""
+    def setUp(self):
+        """setup"""
+        self.storage = models.storage
+        self.user = User(email="user@example.com", password="password")
+        self.user.save()
+
+    def tearDown(self):
+        """test tearDown"""
+        self.storage.delete(self.user)
+        self.storage.save()
+
+    def test_get(self):
+        """test get"""
+        user = self.storage.get(User, self.user.id)
+        self.assertEqual(user.id, self.user.id)
+
+    def test_count(self):
+        """test count"""
+        initial_count = self.storage.count(User)
+        self.assertEqual(initial_count, 1)
+        new_user = User(email="new@example.com", password="password")
+        new_user.save()
+        self.assertEqual(self.storage.count(User), initial_count + 1)
