@@ -6,8 +6,7 @@ A new view for Review objects that handles all default RESTFul API actions
 from flask import jsonify, abort, request
 from api.v1.views import app_views, storage
 from models.review import Review
-from models.place import Place
-from models.user import User
+
 
 
 @app_views.route('/places/<place_id>/reviews', methods=['GET'], strict_slashes=False)
