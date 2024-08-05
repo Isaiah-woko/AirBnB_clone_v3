@@ -57,7 +57,7 @@ def delete_amenity(place_id, amenity_id):
         abort(404)
     else:
         response = jsonify({})
-        response.status_code = 201
+        response.status_code = 200
         return response
 
 
