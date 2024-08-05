@@ -87,7 +87,7 @@ def link_amenity(place_id, amenity_id):
     if getenv("HBNB_TYPE_STORAGE") == "db":
         get_obj.amenities.append(amenity_obj)
     else:
-        get_obj.amenities = amenity_obj
+        get_obj.amenity_ids.append(amenity_obj.id)
 
     get_obj.save()
 
